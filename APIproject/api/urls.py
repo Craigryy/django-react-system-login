@@ -10,6 +10,4 @@ router.register('users',UserViewSet)
 
 urlpatterns =[
     path('',include(router.urls))
-#     path('articles/',ArticleList.as_view()),
-#     path('articles/<int:id>/',ArticleDetails.as_view())
 ]

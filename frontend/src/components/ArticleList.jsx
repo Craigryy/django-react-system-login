@@ -1,10 +1,21 @@
 import React from "react";
+import APIservice from "../APIService";
 
 function ArticleList(props) {
   const editBtn = (article) => {
     // Call the editBtn function passed as a prop, and pass the clicked article as an argument
     props.editBtn(article);
   };
+  const deleteBtn = (article) => {
+    APIservice.deleteArticle(article.id)
+      .then(() => props.deleteBtn(article))
+      .catch((error) => {
+        // Handle error (optional)
+        console.error('Error deleting article:', error);
+        // Add any error handling you want here.
+      });
+  };
+  
 
   return (
     <div>
@@ -22,7 +33,9 @@ function ArticleList(props) {
               </div>
 
               <div className="col">
-                <button className="btn btn-danger">Delete</button>
+                <button onClick={()=>deleteBtn(article)} className="btn btn-danger">
+                  Delete
+                  </button>
               </div>
             </div>
 

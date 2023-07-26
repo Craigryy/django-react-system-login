@@ -1,8 +1,8 @@
-Django and React.js Article Management App
+### Django and React.js Article Management App
 
 This is a web application built with Django (backend) and React.js (frontend) for managing articles. Users can log in, view, insert, update, and delete articles.
 
-Features:
+### Features:
 
 - User Authentication: Users can register and log in to the application. Authentication is handled using JWT (JSON Web Tokens).
 - View Articles: Logged-in users can view a list of articles fetched from the backend API.
@@ -10,7 +10,7 @@ Features:
 - Update Article: Users can update existing articles by editing the title and description.
 - Delete Article: Users can delete articles they no longer need.
 
-Technologies Used:
+### Technologies Used:
 
 - Django: A high-level Python web framework for building the backend API.
 - Django Rest Framework (DRF): A powerful and flexible toolkit for building Web APIs in Django.
@@ -20,10 +20,10 @@ Technologies Used:
 - Bootstrap: A popular CSS framework for styling the frontend.
 - Axios: A promise-based HTTP client for making API requests.
 
-Setup Instructions:
+### Setup Instructions:
 
 1. Clone the repository:
-   git clone https://github.com/craigry/django-react-article-app.git
+   git clone https://github.com/Craigryy/django-react-system-login.git
    cd django-react-article-app
 
 2. Backend Setup:

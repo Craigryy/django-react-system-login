@@ -1,6 +1,5 @@
 .App {
   min-height: 100vh;
-  /* text-align: center; */
   color: white;
   background-color: #282c34;
   padding:20px;
@@ -12,6 +11,14 @@
 .App-link {
   color: #61dafb;
 }
+
+header {
+  background-color: gray;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
 
 @keyframes App-logo-spin {
   from {

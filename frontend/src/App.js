@@ -4,6 +4,8 @@ import ArticleList from './components/ArticleList';
 import Form from './components/Form';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/Footer';
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -67,21 +69,18 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className='row'>
-        <div className='col'>
-          <div className="d-flex align-items-center">
-            <h2>Welcome to my Article</h2>
-          </div>
+    <div>
+      <Header/>
+        <div className='row'>
           <div className='col'>
-            <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
-            <button onClick={logoutBtn} className='btn btn-primary'>Logout</button>
+              <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
+              <button onClick={logoutBtn} className='btn btn-primary'>Logout</button>
           </div>
         </div>
+        <ArticleList articles={articles} editBtn={editBtn} deleteBtn={deleteBtn} />
+        {editArticles ? <Form article={editArticles} updatedInformation={updatedInformation} insertedInformation={insertedInformation} /> : null}
+        <Footer/>
       </div>
-      <ArticleList articles={articles} editBtn={editBtn} deleteBtn={deleteBtn} />
-      {editArticles ? <Form article={editArticles} updatedInformation={updatedInformation} insertedInformation={insertedInformation} /> : null}
-    </div>
   );
 }
 

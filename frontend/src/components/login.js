@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import APIservice from '../APIService';
 import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom'; // Corrected import
+import { useNavigate } from 'react-router-dom'; 
 
 function Login() {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useCookies(['mytoken']);
+  const [isLogin, setLogin] = useState(true);
   const navigate = useNavigate(); // useNavigate hook for navigation
 
   useEffect(() => {
@@ -25,11 +26,17 @@ function Login() {
       });
   };
 
+  const registerBtn = () => {
+    APIservice.RegisterUser({ username, password })
+      .then(() => loginBtn()) // Automatically log in the user after successful registration
+      .catch(error => console.log(error));
+  };
+
   return (
     <div className='App'>
       <br />
       <br />
-      <h1>Please Hallo</h1>
+      {isLogin ? <h1>Login</h1> : <h1>Register</h1>}
       <br />
       <br />
       <div className='mb-3'>
@@ -59,9 +66,16 @@ function Login() {
           onChange={e => setPassword(e.target.value)}
         />
       </div>
-      <button onClick={loginBtn} className='btn btn-primary'>
-        Login
+      <button onClick={isLogin ? loginBtn : registerBtn} className='btn btn-primary'>
+        {isLogin ? 'Login' : 'Register'}
       </button>
+      <div className='mb-3'>
+        <br/>
+        {isLogin ? 
+          <h5>You don't have an account, please <button className='btn btn-primary' onClick={() => setLogin(false)}>Sign up</button> here</h5>
+          : <h5>If you have an account, <button className='btn btn-primary' onClick={() => setLogin(true)}>Login</button> here</h5>
+        }
+      </div>
     </div>
   );
 }
